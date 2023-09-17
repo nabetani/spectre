@@ -1,11 +1,11 @@
 !!!xml
-- BWmm=600.0 # ボード幅 mm
+- BWmm=300.0 # ボード幅 mm
 - BHmm=300.0 # ボード高さ mm
 - BMARGINmm=4.0 # ボードの上下左右のマージン
 - IMARGINmm=4.0 # オブジェクト間のマージン
 - AWmm=BWmm-BMARGINmm*2 # マージン除いたボード幅
 - AHmm=BHmm-BMARGINmm*2 # マージン除いたボード高さ
-- HCOUNT=16
+- HCOUNT=8
 - ITEMWSTEPmm = AWmm / HCOUNT
 - ITEMWmm = ITEMWSTEPmm - IMARGINmm
 %svg{ xmlns:"http://www.w3.org/2000/svg", viewBox:"#{-BMARGINmm} #{-BMARGINmm} #{BWmm} #{BHmm}", width:"#{BWmm}mm" }
