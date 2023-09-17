@@ -1,4 +1,14 @@
 !!!xml
-%svg{ xmlns:"http://www.w3.org/2000/svg", "xmlns:xlink"=>"http://www.w3.org/1999/xlink"}
-    %g
+- BWmm="200"
+- BHmm="100"
+- BMARGINmm="4" # ボードの上下左右のマージン
+- UMARGINmm="4" # オブジェクト間のマージン
+- hcount=5
+- vcount=3
+%svg{ xmlns:"http://www.w3.org/2000/svg", viewBox:"0 0 #{BWmm} #{BHmm}" }
+  - hcount.times do |ix|
+    - vcount.times do |iy|
+      %svg{ viewBox:"0 0 40 40",x:ix*10, width:40 }
+        %circle{ cx:5, cy:5, r:3,  stroke:"red", fill:"grey"}
+
 
