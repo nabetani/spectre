@@ -1,14 +1,32 @@
 !!!xml
-- BWmm="200"
-- BHmm="100"
-- BMARGINmm="4" # ボードの上下左右のマージン
-- UMARGINmm="4" # オブジェクト間のマージン
+- BWmm=600
+- BHmm=300
+- BMARGINmm=4 # ボードの上下左右のマージン
+- UMARGINmm=4 # オブジェクト間のマージン
 - hcount=5
 - vcount=3
 %svg{ xmlns:"http://www.w3.org/2000/svg", viewBox:"0 0 #{BWmm} #{BHmm}" }
   - hcount.times do |ix|
     - vcount.times do |iy|
-      %svg{ viewBox:"0 0 40 40",x:ix*10, width:40 }
-        %circle{ cx:5, cy:5, r:3,  stroke:"red", fill:"grey"}
+      - size=20
+      - step_size = size + UMARGINmm
+      - vbox = "#{-UMARGINmm/2} #{-UMARGINmm/2} #{step_size} #{step_size}"
+      -# - one_pt = 0.3528
+      - one_pt = "1pt"
+      %svg{ viewBox:vbox,x:ix*step_size, width:step_size, stroke:"red", "stroke-width": one_pt, fill:"none"}
+        - p=[0,0,Math::PI]
+        - pts=[]
+        - d=1
+        - "RtrtRtstrTrTrt".chars.each do |ch|
+          - p[0] += d*Math.cos(p[2])
+          - p[1] += d*Math.sin(p[2])
+          - p[2] += Math::PI/6 * {r:3, R:-3, t:2, T:-2, s:0}[ch.to_sym]
+          - pts.push( p[0,2] )
+        - xrange = pts.map(&:first).minmax
+        - xw = xrange.last - xrange.first
+        - z = (size-UMARGINmm)/xw
+        - ymin = pts.map(&:last).min
+        - s = pts.map{ |pt| [(pt[0]-xrange.first)*z, (pt[1]-ymin)*z].join(",") }.join(" ")
+        %polygon{ points:s}
 
 
