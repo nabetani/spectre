@@ -5,9 +5,9 @@
 - IMARGINmm=4.0 # オブジェクト間のマージン
 - AWmm=BWmm-BMARGINmm*2 # マージン除いたボード幅
 - AHmm=BHmm-BMARGINmm*2 # マージン除いたボード高さ
-- HCOUNT=8
-- ITEMWSTEPmm = AWmm / HCOUNT
-- ITEMWmm = ITEMWSTEPmm - IMARGINmm
+- HCOUNT=9 # 水平方向のアイテム数
+- ITEMWSTEPmm = AWmm / HCOUNT # アイテムの設置間隔（横）
+- ITEMWmm = ITEMWSTEPmm - IMARGINmm # アイテムの横幅
 %svg{ xmlns:"http://www.w3.org/2000/svg", viewBox:"#{-BMARGINmm} #{-BMARGINmm} #{BWmm} #{BHmm}", width:"#{BWmm}mm" }
   - turtle=[0,0,Math::PI]
   - pts=[]
